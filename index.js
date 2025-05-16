@@ -28,7 +28,10 @@ window.onload = function () {
     "img/1.jpeg", "img/2.jpeg", "img/3.jpeg", "img/4.jpeg", "img/5.jpeg",
     "img/6.jpeg", "img/7.jpeg", "img/8.jpeg", "img/9.jpeg", "img/10.jpeg",
     "img/11.jpeg", "img/12.jpeg", "img/13.jpeg", "img/14.jpeg", "img/15.jpeg",
-    "img/16.jpeg", "img/17.jpeg"
+    "img/16.jpeg", "img/17.jpeg", "img/18.jpeg", "img/19.jpeg", "img/20.jpeg",
+    "img/21.jpeg", "img/22.jpeg", "img/23.jpeg", "img/24.jpeg", "img/25.jpeg",
+    "img/26.jpeg"
+
   ];
 
   let shuffledImages = [...images];
@@ -97,60 +100,70 @@ window.onload = function () {
 
 
 // timeline
-
-function scrollTimeline(direction) {
-  const container = document.getElementById("timelineScroll");
-  const scrollAmount = 320; // largura aproximada de um item + espaçamento
-  container.scrollBy({
-    left: direction * scrollAmount,
-    behavior: "smooth"
-  });
-}
-
 const timelineItems = document.querySelectorAll(".timeline-item");
 const progressBar = document.getElementById("progressBar");
 const dotsContainer = document.getElementById("timelineDots");
+const container = document.getElementById("timelineScroll");
 
 let currentIndex = 0;
+let autoScrollInterval;
 
-// Criar bolinhas
-timelineItems.forEach((_, index) => {
+// === cria as bolinhas ===
+timelineItems.forEach((_, idx) => {
   const dot = document.createElement("span");
-  if (index === 0) dot.classList.add("active");
+  if (idx === 0) dot.classList.add("active");
   dotsContainer.appendChild(dot);
 });
 
+// === atualiza barra e bolinhas ===
 function updateTimelineProgress() {
   const total = timelineItems.length;
-  const percentage = ((currentIndex + 1) / total) * 100;
-  progressBar.style.width = `${percentage}%`;
+  const pct = ((currentIndex + 1) / total) * 100;
+  progressBar.style.width = `${pct}%`;
 
-  const allDots = dotsContainer.querySelectorAll("span");
-  allDots.forEach((dot, i) => {
+  dotsContainer.querySelectorAll("span").forEach((dot, i) => {
     dot.classList.toggle("active", i === currentIndex);
   });
 }
 
-function scrollTimeline(direction) {
-  const container = document.getElementById("timelineScroll");
-  const itemWidth = container.clientWidth;
+// === função de scroll, loop infinito ===
+function scrollTimeline(direction = 1) {
   const total = timelineItems.length;
+  currentIndex = (currentIndex + direction + total) % total;
 
-  currentIndex += direction;
-
-  if (currentIndex < 0) {
-    currentIndex = total - 1; // volta pro fim
-  } else if (currentIndex >= total) {
-    currentIndex = 0; // volta pro início
-  }
-
+  const itemWidth = container.clientWidth;
   container.scrollTo({
     left: currentIndex * itemWidth,
     behavior: "smooth"
   });
-
   updateTimelineProgress();
+  resetAutoScroll();
 }
+
+// === define o intervalo automático conforme largura ===
+function resetAutoScroll() {
+  clearInterval(autoScrollInterval);
+
+  const isSmall = window.matchMedia("(max-width: 480px)").matches;
+  const delay = isSmall ? 5000 : 10000;
+
+  autoScrollInterval = setInterval(() => scrollTimeline(1), delay);
+}
+
+// === conecta botões ===
+document.querySelector(".scroll-btn.left")
+  .addEventListener("click", () => scrollTimeline(-1));
+document.querySelector(".scroll-btn.right")
+  .addEventListener("click", () => scrollTimeline(1));
+
+// === inicia tudo ao carregar ===
+window.addEventListener("DOMContentLoaded", () => {
+  updateTimelineProgress();
+  resetAutoScroll();
+});
+
+// === também ajusta se o usuário redimensionar a janela ===
+window.addEventListener("resize", resetAutoScroll);
 
 
 // Atualizar ao carregar
@@ -159,65 +172,65 @@ updateTimelineProgress();
 
 // modal
 
-  const envelopeBtn = document.querySelector('.envelope-button');
-  const modalOverlay = document.getElementById('modal-overlay');
-  const closeBtn = document.querySelector('.close-btn');
+const envelopeBtn = document.querySelector('.envelope-button');
+const modalOverlay = document.getElementById('modal-overlay');
+const closeBtn = document.querySelector('.close-btn');
 
-  envelopeBtn.addEventListener('click', () => {
-    modalOverlay.style.display = 'flex';
-  });
+envelopeBtn.addEventListener('click', () => {
+  modalOverlay.style.display = 'flex';
+});
 
-  closeBtn.addEventListener('click', () => {
+closeBtn.addEventListener('click', () => {
+  modalOverlay.style.display = 'none';
+});
+
+window.addEventListener('click', (e) => {
+  if (e.target === modalOverlay) {
     modalOverlay.style.display = 'none';
-  });
-
-  window.addEventListener('click', (e) => {
-    if (e.target === modalOverlay) {
-      modalOverlay.style.display = 'none';
-    }
-  });
+  }
+});
 
 
-  // musicas
+// musicas
 
-  const listEl = document.getElementById('musicList');
-  const detailArt = document.getElementById('trackArt');
-  const detailAudio = document.getElementById('trackAudio');
-  const detailLyrics = document.getElementById('lyrics');
+const listEl = document.getElementById('musicList');
+const detailArt = document.getElementById('trackArt');
+const detailAudio = document.getElementById('trackAudio');
+const detailLyrics = document.getElementById('lyrics');
 
-  listEl.addEventListener('click', async e => {
-    if (e.target.tagName !== 'LI') return;
+listEl.addEventListener('click', async e => {
+  if (e.target.tagName !== 'LI') return;
 
-    // marca ativo
-    document
-      .querySelectorAll('.music-list li')
-      .forEach(li => li.classList.remove('active'));
-    e.target.classList.add('active');
+  // marca ativo
+  document
+    .querySelectorAll('.music-list li')
+    .forEach(li => li.classList.remove('active'));
+  e.target.classList.add('active');
 
-    const artist = e.target.dataset.artist;
-    const title  = e.target.dataset.title;
+  const artist = e.target.dataset.artist;
+  const title = e.target.dataset.title;
 
-    // 1) buscar capa e preview no iTunes
-    const itunes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(artist + ' ' + title)}&limit=1`)
-      .then(r => r.json());
-    if (itunes.results.length) {
-      const track = itunes.results[0];
-      detailArt.src   = track.artworkUrl100.replace('100x100','300x300');
-      detailAudio.src = track.previewUrl;
-      detailAudio.play().catch(()=>{});
-    } else {
-      detailArt.src = '';
-      detailAudio.src = '';
-    }
+  // 1) buscar capa e preview no iTunes
+  const itunes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(artist + ' ' + title)}&limit=1`)
+    .then(r => r.json());
+  if (itunes.results.length) {
+    const track = itunes.results[0];
+    detailArt.src = track.artworkUrl100.replace('100x100', '300x300');
+    detailAudio.src = track.previewUrl;
+    detailAudio.play().catch(() => { });
+  } else {
+    detailArt.src = '';
+    detailAudio.src = '';
+  }
 
-    // 2) buscar letra via Lyrics.ovh
-    detailLyrics.textContent = 'Carregando letra...';
-    fetch(`https://api.lyrics.ovh/v1/${encodeURIComponent(artist)}/${encodeURIComponent(title)}`)
-      .then(r => r.json())
-      .then(data => {
-        detailLyrics.textContent = data.lyrics || 'Letra não encontrada.';
-      })
-      .catch(() => {
-        detailLyrics.textContent = 'Erro ao buscar letra.';
-      });
-  });
+  // 2) buscar letra via Lyrics.ovh
+  detailLyrics.textContent = 'Carregando letra...';
+  fetch(`https://api.lyrics.ovh/v1/${encodeURIComponent(artist)}/${encodeURIComponent(title)}`)
+    .then(r => r.json())
+    .then(data => {
+      detailLyrics.textContent = data.lyrics || 'Letra não encontrada.';
+    })
+    .catch(() => {
+      detailLyrics.textContent = 'Erro ao buscar letra.';
+    });
+});

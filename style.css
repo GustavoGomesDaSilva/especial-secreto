@@ -7,8 +7,9 @@
   /* text-align: center;
   padding: 20px;
   color: #5c2a3b; */
-  
+
 }
+
 html {
   scroll-behavior: smooth;
 }
@@ -24,12 +25,13 @@ html {
   --cor-mensagem: #ffe4ec;
 }
 
-main{
+main {
   width: 100%;
   height: auto;
-  background-color:#212121;
+  background-color: #212121;
   /* padding-top: 15vh; */
 }
+
 header {
   /* position: fixed; */
   width: 100%;
@@ -38,21 +40,24 @@ header {
   background-color: #212121;
 }
 
-header .logo{
+header .logo {
   width: 18vw;
   height: 100%;
-  
+
 }
-header .logo img{
+
+header .logo img {
   height: 100%;
   width: 80%;
   /* background-color: aquamarine; */
 }
-header #topicos{
+
+header #topicos {
   width: 80%;
   /* background-color: aqua; */
   display: flex;
 }
+
 header #topicos ul {
   display: flex;
   justify-content: space-between;
@@ -61,30 +66,36 @@ header #topicos ul {
   /* background-color: greenyellow; */
   list-style: none;
 }
-header #topicos ul li{
+
+header #topicos ul li {
 
   position: relative;
   display: inline-block;
   cursor: pointer;
   transition: color 0.3s ease;
 }
-header #topicos ul li a{
+
+header #topicos ul li a {
   color: var(--cor-destaque);
   text-decoration: none;
 }
+
 header #topicos ul li::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -5px; /* distância da borda ao texto */
+  bottom: -5px;
+  /* distância da borda ao texto */
   width: 0;
   height: 2px;
   background-color: #ffee80;
   transition: width 0.3s ease;
 }
-header #topicos ul li:hover{
+
+header #topicos ul li:hover {
   color: #ffdd00;
 }
+
 header #topicos ul li:hover::after {
   width: 100%;
 }
@@ -106,7 +117,7 @@ header #topicos ul li:hover::after {
 .container #counter {
   margin-bottom: 20px;
 } */
-main #topo{
+main #topo {
   width: 95%;
   /* margin: auto; */
   display: flex;
@@ -114,7 +125,8 @@ main #topo{
   /* background-color: orange; */
   padding-bottom: 10vh;
 }
-main #topo #direita{
+
+main #topo #direita {
   /* background-color: #3b3b3b;   */
   width: 45%;
   height: auto;
@@ -122,16 +134,19 @@ main #topo #direita{
   display: flex;
   align-items: center;
 }
-main #topo #direita p{
+
+main #topo #direita p {
   text-align: justify;
   line-height: 2rem;
   color: var(--cor-texto);
 }
-main #topo #esquerda{
+
+main #topo #esquerda {
   /* background-color: #3b3b3b;   */
   width: 55%;
   height: auto;
 }
+
 main #topo #esquerda .slider {
   position: relative;
   width: 35vw;
@@ -187,20 +202,22 @@ main #topo #esquerda .slider .nav-btn:hover {
   background: #f96e85;
 }
 
-main #timeline{
+main #timeline {
   /* background-color: #6932c7; */
   height: 100vh;
   width: 80%;
   margin: auto;
 }
-main .titulo{
+
+main .titulo {
   margin: auto;
   width: fit-content;
   color: var(--cor-texto);
   font-size: larger;
   /* background-color: #f5f5f5; */
 }
-main .subtitulo{
+
+main .subtitulo {
   width: fit-content;
   margin: auto;
   color: var(--cor-texto);
@@ -236,12 +253,14 @@ main .subtitulo{
   color: #d3d3d367;
 }
 
-.scroll-btn.left{
-  margin-right: -5rem!important;
+.scroll-btn.left {
+  margin-right: -5rem !important;
 }
+
 .timeline-container {
   display: flex;
-  overflow-x: hidden; /* Esconde a rolagem horizontal */
+  overflow-x: hidden;
+  /* Esconde a rolagem horizontal */
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   width: 100%;
@@ -265,7 +284,7 @@ main .subtitulo{
   height: 480px;
   object-fit: cover;
   border-radius: 1rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   margin: 1rem 0;
 }
 
@@ -318,7 +337,7 @@ main .subtitulo{
   display: flex;
   justify-content: space-between;
   padding: 0 5px;
-  
+
 }
 
 .dots span {
@@ -336,7 +355,7 @@ main .subtitulo{
 
 
 
-#final{
+#final {
   width: 100%;
   height: 80vh;
   text-align: center;
@@ -391,6 +410,7 @@ main .subtitulo{
   color: white;
   transform: scale(1.05);
 }
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -426,8 +446,13 @@ main .subtitulo{
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .close-btn {
@@ -444,10 +469,13 @@ main .subtitulo{
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
     opacity: 1;
   }
+
   50% {
     transform: translateY(-10px);
     opacity: 0.7;
@@ -455,12 +483,19 @@ main .subtitulo{
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 
-#musicas{
+#musicas {
   padding-top: 20vh;
   width: 100%;
   height: 100vh;
@@ -474,7 +509,7 @@ main .subtitulo{
 }
 
 .music-container {
-   display: flex;
+  display: flex;
   gap: 2rem;
   justify-content: center;
   flex-wrap: wrap;
@@ -504,11 +539,12 @@ main .subtitulo{
 
 /* detalhe à direita */
 .music-detail {
-  width: 55%; /* ou ajuste para 300px, 350px, etc */
+  width: 55%;
+  /* ou ajuste para 300px, 350px, etc */
   background: #93939350;
   border-radius: 8px;
   padding: 1rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
@@ -537,11 +573,126 @@ main .subtitulo{
 audio {
   width: 300px;
   border-radius: 10px;
-  
+
 }
 
 audio::-webkit-media-controls-panel {
   background-color: #393739d6;
   border-radius: 10px;
   padding: 5px;
+}
+
+
+@media (max-width: 480px) {
+  main {}
+
+  main #topo {
+    display: flex;
+    flex-direction: column-reverse;
+    /* background-color: #5c2a3b; */
+    margin: auto;
+  }
+
+  main #topo #direita {
+    /* background-color: purple; */
+    width: 80%;
+    margin: auto;
+    margin-top: 15vh;
+    font-size: 1.3rem;
+  }
+
+  main #topo #direita p {
+    line-height: 3rem;
+  }
+
+  main #topo #esquerda {
+    /* background-color: yellow; */
+    width: 90%;
+    margin: auto;
+  }
+
+  main #topo #esquerda .slider {
+    width: 80%;
+  }
+
+  main #topo #esquerda .slider img {
+    width: 100%;
+
+  }
+
+  main #timeline {
+    margin-bottom: 30vh;
+  }
+
+  #timeline {
+    padding: 1rem;
+    margin-bottom: 30vh;
+  }
+
+  #timeline .titulo h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  #timeline .subtitulo {
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .timeline-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    gap: 0.5rem;
+    overflow-x: visible;
+    /* alterado de hidden para visible */
+    padding: 0 0.5rem;
+    /* background-color: #6932c7; */
+  }
+
+  .timeline-container {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 1rem 2vw; /* aumente o padding lateral aqui */
+  width: 90vw;
+  margin: 0 auto;
+  /* background-color: yellow; */
+}
+
+
+
+  .timeline-item {
+    min-width: 70vw;
+    text-align: center;
+  }
+
+  .timeline-item img {
+    width: 100%;
+    border-radius: 12px;
+  }
+
+  .scroll-btn {
+    background-color: #ffecf1;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    color: #b60041;
+    position: relative;
+    z-index: 2;
+
+
+    display: none;
+  }
+
+  .timeline-progress {
+    display: none;
+  }
+
+
 }
