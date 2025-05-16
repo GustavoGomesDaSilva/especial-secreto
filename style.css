@@ -585,6 +585,10 @@ audio::-webkit-media-controls-panel {
 
 @media (max-width: 420px) {
 
+  main{
+    overflow: hidden;
+  }
+
   main #topo {
     display: flex;
     flex-direction: column-reverse;
@@ -612,11 +616,14 @@ audio::-webkit-media-controls-panel {
 
   main #topo #esquerda .slider {
     width: 80%;
+    box-shadow: none;
   }
 
   main #topo #esquerda .slider img {
     width: 100%;
     max-height: 70vh;
+    object-fit: cover;
+    box-shadow: #86868680 0px 2px 10px ;
   }
 
   #timeline {
@@ -698,13 +705,47 @@ audio::-webkit-media-controls-panel {
     display: none;
   }
 
-  #musicas{
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 50vh;
+  #musicas {
+    padding: 1rem;
+    align-items: center;
+    margin-bottom: 40vh;
   }
 
-  #final{
-    margin-top: 100vh;
+  .music-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .music-container ul {
+    width: 80%; /* ocupa toda a largura disponível */
+    max-width: 100%;
+    /* padding: 0.5rem; */
+    box-sizing: border-box;
+    font-size: 0.9rem;
+  }
+
+  .music-container ul li {
+    padding: 0.5rem;
+    border-bottom: 1px solid #fff;
+    color: #222;
+  }
+
+  .music-detail {
+    width: 100%;
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .music-detail img {
+    max-width: 80%;
+    height: auto;
+    margin-bottom: 0.5rem;
+  }
+
+  .music-detail audio {
+    width: 80%;
   }
 }
