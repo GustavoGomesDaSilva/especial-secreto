@@ -678,6 +678,7 @@ audio::-webkit-media-controls-panel {
   .timeline-item img {
     border-radius: 8px;
     max-height:55vh;
+    max-width: 70vw;
     /* height: 60vh; */
     object-fit: contain; /* mantém proporção agradável */
     box-shadow: none;
@@ -717,7 +718,7 @@ audio::-webkit-media-controls-panel {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 85%;
+    width: 83%;
     justify-content: center;
   }
 
