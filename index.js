@@ -145,10 +145,16 @@ function resetAutoScroll() {
   clearInterval(autoScrollInterval);
 
   const isSmall = window.matchMedia("(max-width: 480px)").matches;
-  const delay = isSmall ? 5000 : 10000;
 
+  if (isSmall) {
+    // No mobile, não ativa o auto scroll
+    return;
+  }
+
+  const delay = 10000; // delay padrão em desktop
   autoScrollInterval = setInterval(() => scrollTimeline(1), delay);
 }
+
 
 // === conecta botões ===
 document.querySelector(".scroll-btn.left")

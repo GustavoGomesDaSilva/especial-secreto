@@ -595,6 +595,14 @@ audio::-webkit-media-controls-panel {
     /* background-color: #5c2a3b; */
   }
 
+  main header .logo{
+    width: 30%;
+  }
+
+   main header .logo img{
+    width: 100%;
+  }
+
   main header #topicos{
     /* background-color: red; */
     width: 90%;
