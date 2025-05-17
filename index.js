@@ -169,6 +169,28 @@ window.addEventListener("resize", resetAutoScroll);
 // Atualizar ao carregar
 updateTimelineProgress();
 
+let isUserScrolling = false;
+
+// Detecta interação manual no mobile (scroll ou toque)
+if (window.matchMedia("(max-width: 480px)").matches) {
+  let touchStartX = 0;
+
+  container.addEventListener("touchstart", (e) => {
+    touchStartX = e.touches[0].clientX;
+  });
+
+  container.addEventListener("touchmove", (e) => {
+    const moveX = e.touches[0].clientX;
+    if (Math.abs(moveX - touchStartX) > 10) {
+      if (!isUserScrolling) {
+        isUserScrolling = true;
+        resetAutoScroll(); // Reinicia o tempo se for toque do usuário
+        setTimeout(() => isUserScrolling = false, 500); // Evita múltiplos resets
+      }
+    }
+  });
+}
+
 
 // modal
 

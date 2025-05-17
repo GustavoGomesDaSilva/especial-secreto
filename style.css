@@ -373,8 +373,8 @@ main .subtitulo {
 
 .envelope-button {
   position: relative;
-  background: #ffe4ec;
-  color: #5c2a3b;
+  background: #fffbac;
+  color: #262626;
   font-size: 1.2rem;
   font-weight: bold;
   border: none;
@@ -382,7 +382,7 @@ main .subtitulo {
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+  box-shadow: 0 0 30px rgba(255, 200, 20, 0.5);
 }
 
 .envelope-button::before,
@@ -406,9 +406,10 @@ main .subtitulo {
 }
 
 .envelope-button:hover {
-  background-color: #f96e85;
+  background-color: #cc2def;
   color: white;
   transform: scale(1.05);
+  box-shadow: var(--cor-destaque-hover) 0 0 30px;
 }
 
 .modal-overlay {
@@ -426,15 +427,15 @@ main .subtitulo {
 }
 
 .modal-content {
-  background: #fff0f5;
-  color: #5c2a3b;
+  background: #fffbac;
+  color: #262626;
   padding: 30px;
   border-radius: 20px;
   width: 80%;
   max-width: 600px;
   position: relative;
   text-align: center;
-  box-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
+  box-shadow: 0 0 30px rgba(255, 200, 20, 0.5);
   transform: scale(0.8);
   animation: openEnvelope 0.5s forwards;
 }
@@ -587,6 +588,17 @@ audio::-webkit-media-controls-panel {
 
   main{
     overflow: hidden;
+  }
+
+  main header{
+    font-size: 1rem;
+    /* background-color: #5c2a3b; */
+  }
+
+  main header #topicos{
+    /* background-color: red; */
+    width: 90%;
+    justify-content: space-around;
   }
 
   main #topo {
