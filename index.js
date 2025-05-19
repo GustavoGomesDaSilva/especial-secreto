@@ -1,18 +1,46 @@
-// // Data do início do relacionamento
-// const startDate = new Date("2025-02-02T00:00:00");
-// const counter = document.getElementById("counter");
+// Função para o relacionamento (02/02/2025)
+const startDate = new Date("2025-02-02T00:00:00");
+const counter = document.getElementById("counter");
 
-// function updateTimeTogether() {
-//   const now = new Date();
-//   const diff = now - startDate;
+function updateTimeTogether() {
+  const now = new Date();
+  const diff = now - startDate;
 
-//   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-//   const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-//   const minutes = Math.floor((diff / (1000 * 60)) % 60);
-//   const seconds = Math.floor((diff / 1000) % 60);
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
 
-//   counter.innerText = `Estamos juntos há ${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos 💕`;
-// }
+  counter.innerText = `Já se passaram ${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos so nosso primeiro encontro 💕`;
+}
+
+// Função para a nova data especial (17/05/2025)
+const specialDate = new Date("2025-05-17T00:00:00");
+const specialCounter = document.getElementById("specialCounter");
+
+function updateSpecialDateCounter() {
+  const now = new Date();
+  const diff = now - specialDate;
+
+  if (diff < 0) {
+    specialCounter.innerText = "Essa data ainda não chegou 💕";
+    return;
+  }
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+
+  specialCounter.innerText = `Desde o dia em que começamos a namorar, já se passaram ${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos 💘`;
+}
+
+// Chamadas iniciais + atualização automática
+updateTimeTogether();
+updateSpecialDateCounter();
+
+setInterval(updateTimeTogether, 1000);
+setInterval(updateSpecialDateCounter, 1000);
 
 // setInterval(updateTimeTogether, 1000);
 // updateTimeTogether();
